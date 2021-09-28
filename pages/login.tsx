@@ -10,7 +10,7 @@ const LoginPage = () => {
         justifyContent: "center",
       }}
     >
-      <button onClick={() => signIn("manager@volynt.com", "123456")}>
+      <button onClick={() => signIn("shahab.yazdi@apsaaz.com", "123456")}>
         Login
       </button>
       {signInLoading && <p>Loading....</p>}
