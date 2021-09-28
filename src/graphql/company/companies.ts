@@ -95,4 +95,3 @@ export const company_DeleteCompany = {
 export type company_DeleteCompanyType = company_MutationType<
   typeof DELETE_COMPANY_KEY
 >;
-

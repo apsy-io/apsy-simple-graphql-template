@@ -7,25 +7,31 @@ import { SWRConfig } from "swr";
 
 import "../styles/globals.css";
 
+import { QueryClient, QueryClientProvider } from "react-query";
+
+const queryClient = new QueryClient();
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <SWRConfig
-      value={{
-        errorRetryCount: 0,
-        onError: onSWRError,
-        onErrorRetry: onSWRErrorRetry,
-        revalidateOnFocus: false,
-        revalidateOnMount: true,
-      }}
-    >
-      <SnackProvider>
-        <AuthorizationProvider>
-          <AuthenticationProvider>
-            <Component {...pageProps} />
-          </AuthenticationProvider>
-        </AuthorizationProvider>
-      </SnackProvider>
-    </SWRConfig>
+    <QueryClientProvider client={queryClient}>
+      <SWRConfig
+        value={{
+          errorRetryCount: 0,
+          onError: onSWRError,
+          onErrorRetry: onSWRErrorRetry,
+          revalidateOnFocus: false,
+          revalidateOnMount: true,
+        }}
+      >
+        <SnackProvider>
+          <AuthorizationProvider>
+            <AuthenticationProvider>
+              <Component {...pageProps} />
+            </AuthenticationProvider>
+          </AuthorizationProvider>
+        </SnackProvider>
+      </SWRConfig>
+    </QueryClientProvider>
   );
 }
 
